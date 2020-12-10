@@ -1,0 +1,32 @@
+specVersion: 0.0.2
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: IND
+    network: mainnet
+    source:
+      address: "0xf8e386eda857484f5a12e4b5daa9984e06e73705"
+      abi: IND
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - Pause
+        - Unpause
+        - Transfer
+        - Approval
+      abis:
+        - name: IND
+          file: IND\abis\IND.json
+      eventHandlers:
+        - event: Pause()
+          handler: handlePause
+        - event: Unpause()
+          handler: handleUnpause
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+      file: IND\IND.wasm

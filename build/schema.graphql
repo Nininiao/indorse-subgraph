@@ -1,0 +1,28 @@
+type Pause @entity {
+  "This entity represents that Pausable Token Contract start"
+  id: ID!
+}
+type Unpause @entity {
+  "This entity represents that Ownable Contract start "
+  id: ID!
+}
+type Transfer @entity {
+  "This entity represents IND Transfer"
+  id: ID!
+  "User address"
+  address: String!
+  value: BigInt!
+}
+type Approval @entity {
+  "This entity represents Approval of IND user address"
+  id: ID!
+  _owner: Bytes! 
+  "Owner address"
+  address: String!
+  "User transaction"
+  transactionCount: Int!
+}
+type ExampleEntity @entity {
+  id: ID!
+  count: BigInt!
+}
